@@ -2,7 +2,7 @@ import { User } from '../contexts/AuthContext';
 
 // Use production Railway URL or fallback to localhost for development
 const API_BASE = (import.meta.env.VITE_API_URL as string) || 
-  (import.meta.env.PROD ? 'https://web-production-50cb.up.railway.app/api' : 'http://localhost:5001/api');
+  (import.meta.env.PROD ? 'https://disaster-management-system-production.up.railway.app/api' : 'http://localhost:5001/api');
 
 type LoginResponse = { success: boolean; token: string; user: any };
 type RegisterResponse = { success: boolean; token: string; user: any };
