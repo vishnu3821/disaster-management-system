@@ -1,6 +1,8 @@
 import { Disaster } from '../contexts/DisasterContext';
 
-const API_BASE = (import.meta.env.VITE_API_URL as string) || 'http://localhost:5001/api';
+// Use production Railway URL or fallback to localhost for development
+const API_BASE = (import.meta.env.VITE_API_URL as string) || 
+  (import.meta.env.PROD ? 'https://disaster-management-system-production.up.railway.app/api' : 'http://localhost:5001/api');
 
 const getAuthHeaders = (): Record<string, string> => {
   const token = localStorage.getItem('token');
