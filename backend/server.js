@@ -15,7 +15,10 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    origin: [
+      process.env.FRONTEND_URL || "http://localhost:5173",
+      "https://disaster-management-system-ten.vercel.app"
+    ],
     methods: ["GET", "POST"]
   }
 });
@@ -23,7 +26,10 @@ const io = socketIo(server, {
 // Middleware
 app.use(helmet());
 app.use(cors({
-  origin: process.env.FRONTEND_URL || "http://localhost:5173",
+  origin: [
+    process.env.FRONTEND_URL || "http://localhost:5173",
+    "https://disaster-management-system-ten.vercel.app"
+  ],
   credentials: true
 }));
 
