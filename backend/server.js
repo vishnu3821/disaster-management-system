@@ -44,18 +44,8 @@ app.use('/api/', limiter);
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// Sync Sequelize models and connect to MySQL
-testAndSync();
-async function testAndSync() {
-  try {
-    await syncAll();
-    console.log('Database connected and synced successfully');
-  } catch (err) {
-    console.error('Database connection failed:', err.message);
-    console.log('Server will continue without database connection');
-    // Don't exit - allow server to start without database for Railway deployment
-  }
-}
+// Skip database sync for Railway deployment - start server immediately
+console.log('Starting server without database sync for Railway deployment');
 
 // Socket.IO connection handling
 io.on('connection', (socket) => {
