@@ -49,9 +49,11 @@ testAndSync();
 async function testAndSync() {
   try {
     await syncAll();
+    console.log('Database connected and synced successfully');
   } catch (err) {
-    console.error('Sequelize sync error:', err);
-    process.exit(1);
+    console.error('Database connection failed:', err.message);
+    console.log('Server will continue without database connection');
+    // Don't exit - allow server to start without database for Railway deployment
   }
 }
 
